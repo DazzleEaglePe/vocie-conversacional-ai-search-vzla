@@ -13,7 +13,7 @@ export class GeminiProvider implements ILLMProvider {
 
   async chat(messages: LLMMessage[], systemPrompt: string): Promise<LLMResponse> {
     const model = this.client.getGenerativeModel({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-flash-latest',
       systemInstruction: systemPrompt,
     });
 
