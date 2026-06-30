@@ -11,7 +11,7 @@ import InputBar from '@/components/organisms/InputBar';
 import QuickReplies from '@/components/molecules/QuickReplies';
 import WaveformBars from '@/components/atoms/WaveformBars';
 import StatusBadge from '@/components/atoms/StatusBadge';
-import { Shield, Brain, ChevronLeft, Camera, Mic, Video, MessageSquare, Volume2 } from 'lucide-react';
+import { Shield, Brain, ChevronLeft, Camera, Mic, Video, MessageSquare, Volume2, RotateCcw } from 'lucide-react';
 import { useState } from 'react';
 import DebugPanel from '@/components/molecules/DebugPanel';
 import { cn } from '@/lib/utils';
@@ -29,11 +29,12 @@ interface ChatScreenProps {
   quickReplies: QuickReply[];
   onSelectQuickReply: (value: string) => void;
   onBack: () => void;
+  onClearChat: () => void;
 }
 
 export default function ChatScreen({
   messages, isLoading, isListening, isSpeaking,
-  status, onSend, onVoiceToggle, quickReplies, onSelectQuickReply, onBack,
+  status, onSend, onVoiceToggle, quickReplies, onSelectQuickReply, onBack, onClearChat,
 }: ChatScreenProps) {
   const [debugOpen, setDebugOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'voice' | 'text'>('voice');
@@ -102,6 +103,17 @@ export default function ChatScreen({
         <div className="flex items-center gap-2">
           {viewMode === 'voice' && <StatusBadge status={status} />}
           
+          {/* Nueva conversación */}
+          {messages.length > 1 && (
+            <button
+              onClick={onClearChat}
+              className="p-2 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/40 hover:text-white/70 hover:bg-white/[0.08] transition-colors cursor-pointer"
+              title="Nueva conversación"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+          )}
+
           {/* Voice/Text View Mode Toggle */}
           <button
             onClick={() => setViewMode(m => m === 'voice' ? 'text' : 'voice')}
