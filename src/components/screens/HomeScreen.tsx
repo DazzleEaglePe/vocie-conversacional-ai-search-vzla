@@ -63,7 +63,7 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
   }, []);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0 overflow-y-auto pb-28 no-scrollbar">
+    <div className="flex flex-col flex-1 min-h-0 overflow-y-auto pb-28 no-scrollbar" suppressHydrationWarning>
 
       {/* ── Header ──────────────────────────────────────────── */}
       <div ref={headerRef} className="px-5 pt-5 pb-3 shrink-0" style={{ opacity: 0 }}>
@@ -106,7 +106,7 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
         Row 1:  [Desaparecidos — 2 cols] [Encontrados — 1 col]
         Row 2:  [Refugios — 1 col]       [Voluntarios — 2 cols]
       */}
-      <div className="px-5 grid grid-cols-3 gap-2.5 shrink-0">
+      <div className="px-5 grid grid-cols-3 gap-2.5 shrink-0" suppressHydrationWarning>
 
         {/* A — Reportados desaparecidos (hero cell, 2/3 ancho) */}
         <BentoCell

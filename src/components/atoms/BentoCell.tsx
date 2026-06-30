@@ -89,6 +89,7 @@ export default function BentoCell({
         onClick && 'cursor-pointer hover:bg-white/[0.02] active:scale-[0.98] transition-transform duration-150',
         className
       )}
+      suppressHydrationWarning
       style={{
         opacity: 0,
         ...style
